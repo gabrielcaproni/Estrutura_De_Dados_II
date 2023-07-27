@@ -29,7 +29,7 @@ public class JavaSorts {
         
         System.out.println("Vetor original ");
         printArray(vetor);
-        BubbleSort.bSorteComentado(vetor);
+        BubbleSort.bSorte(vetor);
         System.out.println("\nVetor ordenado ");
         printArray(vetor);
     }
