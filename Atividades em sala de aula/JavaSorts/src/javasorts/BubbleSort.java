@@ -12,13 +12,30 @@ import java.util.Scanner;
  * @author Gabriel Pegoraro
  */
 public class BubbleSort {
-    public static void bSorte(int array[]){
+    public static void bSorteCrescente(int array[]){
         boolean troca;
         do{
             troca = false;
         for(int fase = 1; fase < array.length; fase++){
             for(int comp = 0; comp < array.length - fase; comp++){
                 if(array[comp] > array[comp+1]){
+                    troca = true;
+                    int temp = array[comp];
+                    array[comp] = array[comp+1];
+                    array[comp+1] = temp;
+                }//fim if 
+            }//fim for comp
+        }//fim for fase
+        }while(troca);
+    }
+    
+     public static void bSorteDecrescente(int array[]){
+        boolean troca;
+        do{
+            troca = false;
+        for(int fase = 1; fase < array.length; fase++){
+            for(int comp = 0; comp < array.length - fase; comp++){
+                if(array[comp] < array[comp+1]){
                     troca = true;
                     int temp = array[comp];
                     array[comp] = array[comp+1];
