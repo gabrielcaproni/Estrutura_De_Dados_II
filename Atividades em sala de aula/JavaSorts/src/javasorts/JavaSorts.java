@@ -36,6 +36,7 @@ public class JavaSorts {
         int[] vetor = new int[tamanho];
         int[] vetor2 = new int[tamanho];
         op = menuEntrada();
+        
         switch(op){
             
             case 1: for(int i = 0; i < vetor.length - 1; i++){
@@ -50,13 +51,19 @@ public class JavaSorts {
                 
                 break;
         }
+
+//-----------------------------------------------------------------        
+        // SELECTIONSORT
         
-        System.out.println("Vetor original ");
+        /*System.out.println("Vetor original ");
         printArray(vetor);
         
         SelectionSort.sSortComentado(vetor);
         System.out.println("\nVetor ordenado ");
         printArray(vetor);
+       
+//-----------------------------------------------------------------
+        // BUBLLESORT 
         
         BubbleSort.bSorteComentado(vetor);
         System.out.println("\nVetor ordenado Crescente ");
@@ -64,9 +71,19 @@ public class JavaSorts {
         
         BubbleSort.bSorteDecrescente(vetor2);
         System.out.println("\nVetor ordenado Decrescente ");
-        printArray(vetor2);
-    }
-    
+        printArray(vetor2);*/
+        
+//-----------------------------------------------------------------
+        // INSERTIONSORT
+        
+        System.out.println("Vetor original ");
+        printArray(vetor);
+        
+        InsertionSort.iSortComentado(vetor);
+        System.out.println("\nVetor ordenado ");
+        printArray(vetor);
+    }   
+        
     public static void printArray(int array[]){
        for(int i = 0; i < array.length; i++){
            System.out.print(array[i] + "| ");
