@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javasorts;
 
 import java.util.Scanner;
@@ -12,58 +7,82 @@ import java.util.Scanner;
  * @author Gabriel Pegoraro
  */
 public class BubbleSort {
-    public static void bSorteCrescente(int array[]){
-        for(int fase = 1; fase < array.length; fase++){
-            boolean troca = true;
-            for(int comp = 0; comp < array.length - fase; comp++){
-                if(array[comp] > array[comp+1]){ 
-                    int temp = array[comp];
-                    array[comp] = array[comp+1];
-                    array[comp+1] = temp;
-                    troca = false;
-                }//fim if 
-            }//fim for comp
-            if(troca)
-                break;
-        }//fim for fase
+    
+    public static void bSort(int array[]) {
+        int n = array.length;
+        int temp;
+        for(int fase = 1; fase < n; fase++) {
+            boolean trocaFase = false;
+
+            for(int comp = 0; comp < n - fase; comp++) {
+                if(array[comp] > array[comp + 1]) {
+                    temp = array[comp];
+                    array[comp] = array[comp + 1];
+                    array[comp + 1] = temp;
+                    trocaFase = true;
+                }
+            }
+
+            if(!trocaFase) {
+                return;
+            }
+        }
     }
     
-     public static void bSorteDecrescente(int array[]){
-        for(int fase = 1; fase < array.length; fase++){
-            for(int comp = 0; comp < array.length - fase; comp++){
-                if(array[comp] < array[comp+1]){
-                    int temp = array[comp];
-                    array[comp] = array[comp+1];
-                    array[comp+1] = temp;
-                }//fim if 
-            }//fim for comp
-        }//fim for fase
-    }
-        
-    
-    public static void bSorteComentado(int array[]){
+    public static void bSortComentado(int array[]) {
         Scanner scanner = new Scanner(System.in);
-        
-        for(int fase = 1; fase < array.length; fase++){
-            boolean troca = true;
+        int n = array.length;
+        int temp;
+
+        for(int fase = 1; fase < n; fase++) {
             System.out.println("Fase: " + fase);
             JavaSorts.printArray(array);
-            scanner.nextLine(); // pause
-            
-            for(int comp = 0; comp < array.length - fase; comp++){
-                
-                System.out.println("Comparando " + array[comp] + " com " + array[comp+1]);
-                if(array[comp] > array[comp+1]){
-                    System.out.println("Trocou");
-                    int temp = array[comp];
-                    array[comp] = array[comp+1];
-                    array[comp+1] = temp;
-                    troca = false;
-                }//fim if 
-            }//fim for comp
-            if(troca)
-                 System.out.println("\nVetor ja esta ordenado.");
-                break;
-        }//fim for fase
-    }//fim classe
+            scanner.nextLine();
+            boolean trocaFase = false;
+
+            for(int comp = 0; comp < n - fase; comp++) {
+                //System.out.println("Comparacao: " + (comp + 1));
+                System.out.println("Comparando: " + array[comp] + " e " + array[comp+1]);
+                if(array[comp] > array[comp + 1]) {
+                    temp = array[comp];
+                    array[comp] = array[comp + 1];
+                    array[comp + 1] = temp;
+                    trocaFase = true;
+                }
+            }
+
+            if(!trocaFase) {
+                return;
+            }
+        }
+    }
+
+    public static void bSortDesc(int array[]) {
+        Scanner scanner = new Scanner(System.in);
+        int n = array.length;
+        int temp;
+
+        for(int fase = 1; fase < n; fase++) {
+            System.out.println("Fase: " + fase);
+            JavaSorts.printArray(array);
+            scanner.nextLine();
+            boolean trocaFase = false;
+
+            for(int comp = 0; comp < n - fase; comp++) {
+                //System.out.println("Comparacao: " + (comp + 1));
+                System.out.println("Comparando: " + array[comp] + " e " + array[comp+1]);
+                if(array[comp] < array[comp + 1]) {
+                    temp = array[comp];
+                    array[comp] = array[comp + 1];
+                    array[comp + 1] = temp;
+                    trocaFase = true;
+                }
+            }
+
+            if(!trocaFase) {
+                return;
+            }
+        }
+    }
+        
 }
