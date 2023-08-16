@@ -13,26 +13,52 @@ import java.util.Scanner;
  * @author Gabriel Pegoraro
  */
 public class JavaSorts {
-    public static void main(String[] args) {
-        
+    
+    static int menuEntrada(){
         Scanner scanner = new Scanner(System.in);
+        
+        int op;
+        System.out.println("1- Gerar dados");
+        System.out.println("2- Entrar com dados");
+        op = scanner.nextInt();
+        
+        return op;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
         Random rand = new Random();
         int tamanho;
+        int op;
         System.out.println("Tamanho do vetor: ");
         tamanho = scanner.nextInt();
         int[] vetor = new int[tamanho];
         int[] vetor2 = new int[tamanho];
-        
-        System.out.println("Dados vetor: ");
-        for(int i = 0; i < vetor.length; i++){
-            vetor[i] = scanner.nextInt();
-            vetor2[i] = vetor[i];
-        }// fim for
+        op = menuEntrada();
+        switch(op){
+            
+            case 1: for(int i = 0; i < vetor.length - 1; i++){
+                        vetor[i] = rand.nextInt(100);
+                    }
+                    break;
+            
+            case 2: System.out.println("Dados vetor: ");
+                for(int i = 0; i < vetor.length - 1; i++){
+                    vetor[i] = scanner.nextInt();
+            }// fim for
+                
+                break;
+        }
         
         System.out.println("Vetor original ");
         printArray(vetor);
         
-        BubbleSort.bSorteCrescente(vetor);
+        SelectionSort.sSortComentado(vetor);
+        System.out.println("\nVetor ordenado ");
+        printArray(vetor);
+        
+        BubbleSort.bSorteComentado(vetor);
         System.out.println("\nVetor ordenado Crescente ");
         printArray(vetor);
         
