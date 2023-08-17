@@ -8,16 +8,21 @@ import java.util.Scanner;
  */
 public class InsertionSort {
     
+    public static long compara = 0, deslocamento = 0;
+    
     private static void insert(int array[], int i){
         
         int eleito = array[i];
         int comp = i - 1;
         
         while(comp >= 0 && eleito < array[comp]){
+            compara++;
             array[comp + 1] = array[comp];// deslocando
+            deslocamento++;
             comp--;
         }//fim while
         
+        compara++;
         // iserindo eleito na posição de comparação
         array[comp + 1] = eleito;
         

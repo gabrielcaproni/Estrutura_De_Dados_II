@@ -8,11 +8,15 @@ import java.util.Scanner;
  */
 public class SelectionSort {
     
+    public static long compara = 0, troca = 0;
+    
     private static int indexMinArray(int array[], int posAtual){
         
         int k = posAtual; // K é o indice do menor 
         
         for(int i = posAtual + 1; i < array.length; i++){
+            
+            compara++;
             if(array[i] < array[k]){
                 k = i;
             }
@@ -28,6 +32,7 @@ public class SelectionSort {
             
             // trocar os valores de i com k
             
+            troca++;
             int temp = array[i];
             array[i] = array[k];
             array[k] = temp;

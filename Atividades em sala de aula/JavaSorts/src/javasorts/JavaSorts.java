@@ -46,6 +46,7 @@ public class JavaSorts {
         int tamanho;
         int op;
         int opAlgoritmo;
+        long tempoInicial, tempoFinal;
         
         System.out.println("Tamanho do vetor: ");
         tamanho = scanner.nextInt();
@@ -79,13 +80,20 @@ public class JavaSorts {
         // BUBLLESORT
         
         switch(opAlgoritmo){
-            case 1: BubbleSort.bSortComentado(vetor);
-                System.out.println("\nVetor ordenado Crescente ");
+            case 1: System.out.println("\nVetor ordenado Crescente ");
                 printArray(vetor);
-        
-                BubbleSort.bSortDesc(vetor2);
-                System.out.println("\nVetor ordenado Decrescente ");
+                
+                tempoInicial = System.currentTimeMillis();
+                BubbleSort.bSort(vetor);
+                tempoFinal = System.currentTimeMillis();
+                System.out.println("\nComparações: " + BubbleSort.compara + " \nTrocas: " + BubbleSort.troca  + " \nTempo: " + (tempoFinal - tempoInicial));
+                
+                /*System.out.println("\nVetor ordenado Decrescente ");
                 printArray(vetor2);
+                tempoInicial = System.currentTimeMillis();
+                BubbleSort.bSortDesc(vetor2);
+                tempoFinal = System.currentTimeMillis();
+                System.out.println("Comparações: " + BubbleSort.compara + " Tempo: " + (tempoFinal - tempoInicial));*/
                 
                 break;
         
@@ -94,11 +102,12 @@ public class JavaSorts {
         
             case 2: System.out.println("Vetor original ");
                 printArray(vetor);
-        
-                SelectionSort.sSortComentado(vetor);
-                System.out.println("\nVetor ordenado ");
-                printArray(vetor);
                 
+                tempoInicial = System.currentTimeMillis();
+                SelectionSort.sSort(vetor);
+                tempoFinal = System.currentTimeMillis();
+                System.out.println("\nComparações: " + SelectionSort.compara + " \nTrocas: " + SelectionSort.troca  + " \nTempo: " + (tempoFinal - tempoInicial));
+                               
                 break;
        
 //-----------------------------------------------------------------
@@ -106,13 +115,17 @@ public class JavaSorts {
         
             case 3: System.out.println("Vetor original ");
                 printArray(vetor);
-        
-                InsertionSort.iSortComentado(vetor);
-                System.out.println("\nVetor ordenado ");
-                printArray(vetor);
-        
+                
+                tempoInicial = System.currentTimeMillis();
+                InsertionSort.iSort(vetor);
+                tempoFinal = System.currentTimeMillis();
+                System.out.println("\nComparações: " + InsertionSort.compara + " \nDeslocamentos: " + InsertionSort.deslocamento  + " \nTempo: " + (tempoFinal - tempoInicial));
+                    
                 break;
-        } 
+        }
+        
+        printArray(vetor);
+
     }    
         
     public static void printArray(int array[]){
