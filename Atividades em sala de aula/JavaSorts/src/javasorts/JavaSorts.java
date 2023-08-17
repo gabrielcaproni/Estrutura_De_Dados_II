@@ -45,7 +45,6 @@ public class JavaSorts {
         
         int tamanho;
         int op;
-        int opDecrescente;
         int opAlgoritmo;
         
         System.out.println("Tamanho do vetor: ");
@@ -54,34 +53,24 @@ public class JavaSorts {
         int[] vetor2 = new int[tamanho];
         op = menuEntrada();
         opAlgoritmo = menuAlgoritmo();
-        opDecrescente = menuEntrada();
         
         switch(op){
             
             case 1: for(int i = 0; i < vetor.length - 1; i++){
                         vetor[i] = rand.nextInt(100);
                     }
-                    break;
-            
-            case 2: System.out.println("Dados vetor: ");
-                for(int i = 0; i < vetor.length - 1; i++){
-                    vetor[i] = scanner.nextInt();
-            }// fim for
-                
-                break;
-        }
-        
-        switch(opDecrescente){
-            
-            case 1: for(int i = 0; i < vetor2.length - 1; i++){
+                    for(int i = 0; i < vetor2.length - 1; i++){
                         vetor2[i] = rand.nextInt(100);
                     }
                     break;
             
             case 2: System.out.println("Dados vetor: ");
+                for(int i = 0; i < vetor.length - 1; i++){
+                    vetor[i] = scanner.nextInt();
+                }
                 for(int i = 0; i < vetor2.length - 1; i++){
                     vetor2[i] = scanner.nextInt();
-            }// fim for
+                }
                 
                 break;
         }
