@@ -39,11 +39,24 @@ public class JavaSorts {
         return opcao;
     }
     
+    static int menuBusca(){
+        Scanner scanner = new Scanner(System.in);
+        
+        int opBusca;
+        
+        System.out.println("1 - Busca linear");
+        System.out.println("2 - Busca binária");
+        System.out.println("0 - Sair");
+        opBusca = scanner.nextInt();
+        
+        return opBusca;
+    }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
         
-        int tamanho;
+        int tamanho, valorBusca;
         int op;
         int opAlgoritmo;
         long tempoInicial, tempoFinal;
@@ -54,6 +67,7 @@ public class JavaSorts {
         int[] vetor2 = new int[tamanho];
         op = menuEntrada();
         opAlgoritmo = menuAlgoritmo();
+        
         
         switch(op){
             
@@ -80,7 +94,7 @@ public class JavaSorts {
         // BUBLLESORT
         
         switch(opAlgoritmo){
-            case 1: System.out.println("\nVetor ordenado Crescente ");
+            case 1: System.out.println("\nVetor Original ");
                 printArray(vetor);
                 
                 tempoInicial = System.currentTimeMillis();
@@ -112,6 +126,7 @@ public class JavaSorts {
        
 //-----------------------------------------------------------------
         // INSERTIONSORT
+                
         
             case 3: System.out.println("Vetor original ");
                 printArray(vetor);
@@ -124,8 +139,33 @@ public class JavaSorts {
                 break;
         }
         
+        System.out.println("Vetor Ordenado");
         printArray(vetor);
-
+         int opBusca;
+        do{
+            opBusca= menuBusca();
+        switch(opBusca){
+            
+            case 1: System.out.println("\nValor: ");
+                valorBusca = scanner.nextInt();
+                if(Search.buscaLinear(vetor, valorBusca)){
+                    System.out.println("Encontrado");
+                }else{
+                    System.out.println("Inexistente");
+                }
+                break;
+                
+            case 2: System.out.println("\nValor: ");
+                valorBusca = scanner.nextInt();
+                if(Search.buscaBinaria(vetor, valorBusca)){
+                    System.out.println("Encontrado");
+                }else{
+                    System.out.println("Inexistente");
+                }
+                break;
+        }
+        
+        }while(opBusca != 0);
     }    
         
     public static void printArray(int array[]){
