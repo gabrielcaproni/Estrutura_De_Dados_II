@@ -44,9 +44,9 @@ public class JavaSorts {
         
         int opBusca;
         
-        System.out.println("1 - Busca linear");
+        System.out.println("\n\n1 - Busca linear");
         System.out.println("2 - Busca binária");
-        System.out.println("0 - Sair");
+        System.out.println("0 - Sair\n");
         opBusca = scanner.nextInt();
         
         return opBusca;
@@ -139,7 +139,7 @@ public class JavaSorts {
                 break;
         }
         
-        System.out.println("Vetor Ordenado");
+        System.out.println("Vetor Ordenado\n");
         printArray(vetor);
          int opBusca;
         do{
@@ -153,15 +153,17 @@ public class JavaSorts {
                 }else{
                     System.out.println("Inexistente");
                 }
+                System.out.println("Comparações busca linear: " + Search.compLinear);
                 break;
                 
             case 2: System.out.println("\nValor: ");
                 valorBusca = scanner.nextInt();
-                if(Search.buscaBinaria(vetor, valorBusca)){
+                if(Search.buscaBinariaComentada(vetor, valorBusca)){
                     System.out.println("Encontrado");
                 }else{
                     System.out.println("Inexistente");
                 }
+                System.out.println("Comparações busca binária: " + Search.compBinaria);
                 break;
         }
         
@@ -170,6 +172,11 @@ public class JavaSorts {
         
     public static void printArray(int array[]){
     
+        for(int i = 0; i < array.length; i++)
+            System.out.print(array[i] + "| ");
+    }//fim printArray
+    
+    public static void printIntervalo(int array[], int ini, int fim){
         for(int i = 0; i < array.length; i++)
             System.out.print(array[i] + "| ");
     }//fim printArray
