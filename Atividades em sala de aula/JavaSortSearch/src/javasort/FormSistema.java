@@ -9,6 +9,7 @@ public class FormSistema extends javax.swing.JFrame {
    // Definir os comparadores
     
     Comparator<Dados> comparaNome = (Dados d1, Dados d2)-> d1.getNome().compareTo(d2.getNome());
+    Comparator<Dados> comparaTipo = (Dados d1, Dados d2)-> d1.getTipo().compareTo(d2.getTipo());
     
     public FormSistema() {
         initComponents();
@@ -220,15 +221,6 @@ public class FormSistema extends javax.swing.JFrame {
                 pokemon.setAtaque(Integer.parseInt(leitura[3]));
                 pokemon.setDefesa(Integer.parseInt(leitura[4]));
                 }
-                /*System.out.println(leitura[0]+"\n");
-                System.out.println(leitura[1]+"\n");
-                System.out.println(leitura[2]+"\n");
-                System.out.println(leitura[3]+"\n");
-                System.out.println(leitura[4]+"\n");
-                System.out.println(leitura[5]+"\n");
-                System.out.println(leitura[6]+"\n");
-                System.out.println(leitura[7]+"\n");
-                System.out.println(leitura[8]+"\n");*/
                 lista.add(pokemon); 
             }// fim percurso no arquivo
         } catch (IOException e) {
