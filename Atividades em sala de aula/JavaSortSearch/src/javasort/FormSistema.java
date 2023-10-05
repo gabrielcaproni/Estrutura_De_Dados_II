@@ -198,35 +198,35 @@ public class FormSistema extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void carregaArquivo(){
-     String csvFile = "Pokemon.csv";
-        String line = "";
-        String[] leitura = null;
-        boolean primeiraLinha = true;
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            while ((line = br.readLine()) != null) {
-                
-                if(primeiraLinha) {
-                    primeiraLinha = false;
-                    continue;
-                }
-                
-                Dados pokemon = new Dados();
-                leitura = line.split(",");
-                
-                if(leitura.length > 0 && leitura[2].matches("\\d+")){
-                pokemon.setNome(leitura[0]);
-                pokemon.setTipo(leitura[1]);
-                pokemon.setHP(Integer.parseInt(leitura[2]));
-                pokemon.setAtaque(Integer.parseInt(leitura[3]));
-                pokemon.setDefesa(Integer.parseInt(leitura[4]));
-                }
-                lista.add(pokemon); 
-            }// fim percurso no arquivo
-        } catch (IOException e) {
-            e.printStackTrace();
+        private void carregaArquivo(){
+         String csvFile = "Pokemon.csv";
+            String line = "";
+            String[] leitura = null;
+            boolean primeiraLinha = true;
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                while ((line = br.readLine()) != null) {
+
+                    if(primeiraLinha) {
+                        primeiraLinha = false;
+                        continue;
+                    }
+
+                    Dados pokemon = new Dados();
+                    leitura = line.split(",");
+
+                    if(leitura.length > 0 && leitura[2].matches("\\d+")){
+                    pokemon.setNome(leitura[0]);
+                    pokemon.setTipo(leitura[1]);
+                    pokemon.setHP(Integer.parseInt(leitura[2]));
+                    pokemon.setAtaque(Integer.parseInt(leitura[3]));
+                    pokemon.setDefesa(Integer.parseInt(leitura[4]));
+                    }
+                    lista.add(pokemon); 
+                }// fim percurso no arquivo
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
     //https://1bestcsharp.blogspot.com/2016/03/java-populate-jtable-from-arraylist.html
     void mostra(){
         //limpando a tabela
