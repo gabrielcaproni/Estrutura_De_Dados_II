@@ -1,20 +1,24 @@
 
 package percursosarvorebinaria;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Gabriel Pegoraro
  */
 public class BinarySearchTree<T extends Comparable<T>>{
     Node raiz = null;
+    int cont;
     
-    public void add(T newNode){
+    public int add(T newNode){
         Node<T> newNo = new Node<T>(newNode);
         raiz = inserir(raiz, newNo);
+        return cont;
     }
 
     private Node<T> inserir(Node<T> raiz, Node<T> newNode) {
-        
+        cont++;
         if(raiz == null){
             return newNode;
         }
@@ -25,6 +29,20 @@ public class BinarySearchTree<T extends Comparable<T>>{
         }
         
         return raiz;
+    }
+    
+    public T buscar(T dadoBusca){
+        return (T)buscar(raiz, dadoBusca);
+    }
+    private T buscar(Node<T> raiz, T dadoBusca){
+        if(raiz == null)
+            return null;
+        if(raiz.dado.equals(dadoBusca))
+            return raiz.dado;
+        if(dadoBusca.compareTo(raiz.dado) < 0)
+            return buscar(raiz.esquerda, dadoBusca);
+        else
+            return buscar(raiz.direita, dadoBusca);
     }
     
     public void preOrder(){
@@ -62,6 +80,20 @@ public class BinarySearchTree<T extends Comparable<T>>{
             posOrder(raiz.esquerda);
             posOrder(raiz.direita);
             System.out.print(raiz.dado + " ");
+        }
+    }
+    
+    public void preOrder(JTextArea listMostraDados){
+        preOrder(raiz, listMostraDados);
+        listMostraDados.append("\n");
+    }
+    
+    private void preOrder(Node<T> raiz, JTextArea listMostraDados){
+        
+        if(raiz != null){
+            listMostraDados.append(raiz.dado + "|");
+            preOrder(raiz.esquerda, listMostraDados);
+            preOrder(raiz.direita, listMostraDados);
         }
     }
 }

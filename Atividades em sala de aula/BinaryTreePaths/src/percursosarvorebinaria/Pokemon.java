@@ -5,10 +5,10 @@ package percursosarvorebinaria;
  *
  * @author Gabriel Pegoraro
  */
-public class Pokemon {
+public class Pokemon implements Comparable<Pokemon>{
     private int id;
     private String nome;
-
+    
     /**
      * @return the id
      */
@@ -37,4 +37,25 @@ public class Pokemon {
         this.nome = nome;
     }
     
+    @Override
+    public String toString(){
+            return " Nome:"+this.nome+
+                      " ID:"+this.id;
+    }
+
+    @Override
+    public int compareTo(Pokemon outro) {
+        return Integer.compare
+           (this.id, outro.id);
+    }
+    
+    @Override
+    public boolean equals(Object novoObjeto){
+        if(this == novoObjeto)
+            return true;
+        if(novoObjeto == null || this.getClass() != novoObjeto.getClass())
+            return false;
+        Pokemon outroPokemon = (Pokemon) novoObjeto;
+        return this.id == outroPokemon.id;
+    }
 }
