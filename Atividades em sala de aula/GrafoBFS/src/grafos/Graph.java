@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
+class ComparadorDistancia implements Comparator<No>{
+    public int compare(No no1, No no2){
+        return Integer.compare(no1.distancia, no2.distancia);
+    }
+}
+
 public class Graph {
      private Map<Integer, LinkedList<Aresta>> meuGrafo;
      private ArrayList visitados;
@@ -81,6 +87,46 @@ public class Graph {
         }
         
         return visitados;
+    }
+    
+    public Map<Integer, Integer> dijkstra(int origem){
+        Map<Integer, Integer> distancias = new HashMap<>();
+        Map<Integer, Integer> predecessores = new HashMap<>();
+        PriorityQueue<No> filaPrioridade = new PriorityQueue (new ComparadorDistancia());
+        visitados = new ArrayList();
+        
+        for (int vertice : meuGrafo.keySet()) {
+            distancias.put(vertice, Integer.MAX_VALUE);
+            predecessores.put(vertice, null);
+        }
+        
+        distancias.put(origem, 0);
+        filaPrioridade.add(new No(origem, 0));
+        
+        //Processar o grafo
+        
+        while(!filaPrioridade.isEmpty()){
+            int verticeAtual = filaPrioridade.poll().vertice;
+            
+            if(!visitados.contains(verticeAtual)){
+                visitados.add(verticeAtual);
+            
+                for (Aresta aresta : meuGrafo.get(verticeAtual)) {
+                    int vizinho = aresta.vertice;
+                    int pesoAresta = aresta.peso;
+                    int novaDistancia = distancias.get(verticeAtual) + pesoAresta;
+                    
+                    if(novaDistancia < distancias.get(vizinho)){
+                        distancias.put(vizinho, novaDistancia);
+                        predecessores.put(vizinho, verticeAtual);
+                        filaPrioridade.add(new No(vizinho, novaDistancia));
+                    }// Fim if for
+                }// Fim for
+            }// Fim if
+            
+        }// Fim while processa o grafo
+        
+        return null;
     }
     
     public void imprimirGrafo() {
